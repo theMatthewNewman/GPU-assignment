@@ -16,14 +16,22 @@ This can be confusing because it doesn't match the id's from nvidia-smi.
 
 
 CUDA_VISIBLE_DEVICES => nvidia-smi
+
 ''    =>  cpu
+
 0   =>   2
+
 1   =>   3
+
 2   =>   4
+
 3   =>   5
+
 4   =>   6
+
 5   =>   0
-6    =>  1
+
+6   =>   1
 
 
 For simplicity we can order our devices by PCI_BUS_ID, this will cause the CUDA_DEVICE_ORDER to match nvidia-smi.
