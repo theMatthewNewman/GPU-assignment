@@ -15,41 +15,11 @@ By default Cuda orders its devices by speed with the fastest device being at 0.
 This can be confusing because it doesn't match the id's from nvidia-smi.
 
 
-CUDA_VISIBLE_DEVICES => nvidia-smi
-
-''    =>  cpu
-
-0   =>   2
-
-1   =>   3
-
-2   =>   4
-
-3   =>   5
-
-4   =>   6
-
-5   =>   0
-
-6   =>   1
-
-
 For simplicity we can order our devices by PCI_BUS_ID, this will cause the CUDA_DEVICE_ORDER to match nvidia-smi.
 ```bash
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 ```
 Now our device ids match up!
-
-
-CUDA_VISIBLE_DEVICES => nvidia-smi
-''    =>  cpu
-0   =>   0
-1   =>   1
-2   =>   2
-3   =>   3
-4   =>   4
-5   =>   5
-6    =>  6
 
 # CUDA_VISIBLE_DEVICES
 Setting CUDA_VISIBLE_DEVICES won't tell a program to run on a specified GPU.
