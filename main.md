@@ -1,4 +1,6 @@
-# nvidia-smi
+# Managing GPU usage
+
+## nvidia-smi
 To see what GPUs are available you can run 
 ```bash
 nvidia-smi
@@ -9,7 +11,7 @@ Watching continuously for updates is also possible.
 watch -n .5 "nvidia-smi | tail -n $(($LINES - 2))"
 ```
 
-# CUDA_DEVICE_ORDER
+## CUDA_DEVICE_ORDER
 
 By default Cuda orders its devices by speed with the fastest device being at 0.
 This can be confusing because it doesn't match the id's from nvidia-smi.
@@ -21,7 +23,7 @@ export CUDA_DEVICE_ORDER=PCI_BUS_ID
 ```
 Now our device ids match up!
 
-# CUDA_VISIBLE_DEVICES
+## CUDA_VISIBLE_DEVICES
 Setting CUDA_VISIBLE_DEVICES won't tell a program to run on a specified GPU.
 Instead it will only change what devices are visible to the program. 
 If only one device is visible than it will run on that selected GPU, otherwise it will run on the first one on the list.
@@ -39,7 +41,7 @@ Making multiple devices visible looks like this.
 export CUDA_VISIBLE_DEVICES=1,4,6
 ```
 
-# Specifying which device to use inside of python.
+## Specifying which device to use inside of python.
 It is possible to set these environment variables at the start of our python program.
 ```python
 import os
@@ -49,7 +51,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 It is important to do this before importing tensorflow or pytorch.
 
 
-# Automation
+## Automation
 
 It may be possible to automate this process to pick the best GPU for the job.
 We can Query nvidia-smi choose the device with the lowest memory usage and run the job on it.
@@ -58,7 +60,7 @@ export CUDA_VISIBLE_DEVICES=$(nvidia-smi --query-gpu=memory.free,index --format=
 ```
 
 
-# Notes
+## Notes
 Setting these environment variables may change which GPU is being run on in a pytorch program for example.
 
 ```bash
