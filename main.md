@@ -38,7 +38,7 @@ CUDA_VISIBLE_DEVICES=2 <program-you-want-to-run>
 
 Making multiple devices visible looks like this.
 ```bash
-export CUDA_VISIBLE_DEVICES=1,4,6
+export $CUDA_VISIBLE_DEVICES=1,4,6
 ```
 
 ## Specifying which device to use inside of python.
