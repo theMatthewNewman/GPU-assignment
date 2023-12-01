@@ -29,7 +29,7 @@ Instead it will only change what devices are visible to the program.
 If only one device is visible than it will run on that selected GPU, otherwise it will run on the first one on the list.
 This can either be done for the entire session
 ```bash
-export CUDA_VISIBLE_DEVICES=2
+export $CUDA_VISIBLE_DEVICES=2
 ```
 or just a single program.
 ```bash
@@ -56,7 +56,7 @@ It is important to do this before importing tensorflow or pytorch.
 It may be possible to automate this process to pick the best GPU for the job.
 We can Query nvidia-smi choose the device with the lowest memory usage and run the job on it.
 ```bash
-export CUDA_VISIBLE_DEVICES=$(nvidia-smi --query-gpu=memory.free,index --format=csv,nounits,noheader | sort -nr | head -1 | awk '{ print $NF }'
+export CUDA_VISIBLE_DEVICES=$(nvidia-smi --query-gpu=memory.free,index --format=csv,nounits,noheader | sort -nr | head -1 | awk '{ print $NF }')
 ```
 
 
